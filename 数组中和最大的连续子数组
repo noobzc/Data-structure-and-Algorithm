@@ -1,0 +1,11 @@
+def max_list(l):
+        rs = [] 
+        for i in xrange(len(l)):
+                rs.append(l[i])
+                if sum(rs) <= 0:
+                        rs = [] 
+        return rs       
+
+l = [1, 3, -3, -4, 0, 2, -1, 4]
+ll = max_list(l)
+print ll
