@@ -1,0 +1,36 @@
+
+def fix_down(a, k, n):
+        N = n - 1 
+        while 2 * k < N:
+                j = 2 * k 
+                if j < N and a[j] < a[j + 1]:
+                        j += 1  
+                if a[k] < a[j]: 
+                        a[k], a[j] = a[j], a[k]
+                        k = j   
+                else:   
+                        break   
+
+
+def heap_sort(list):
+        n = len(list) - 1
+        for i in range(n / 2, 0, -1): 
+                fix_down(list, i, len(list))
+
+        print list
+
+        while n > 1:
+                list[1], list[n] = list[n], list[1] 
+                fix_down(list, 1, n)
+                n -= 1  
+
+        return list[1:]
+
+
+
+         
+l = [-1, 26, 5, 7, 77, 11, 59, 75, 63, 13] 
+print l
+rs = heap_sort(l)
+
+print rs
