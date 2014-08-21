@@ -1,0 +1,47 @@
+def get_first_pos(l, k, start, end):
+        if start > end:
+                return -1
+        middle_index = (start + end) / 2
+
+        if l[middle_index] == k:
+                if middle_index == 0 or (middle_index > 0 and l[middle_index - 1] != k):
+                        return middle_index
+                else:   
+                        end = middle_index - 1
+
+        elif l[middle_index] < k:
+                start = middle_index + 1
+        else:   
+                end = middle_index - 1
+
+        return get_first_pos(l, k, start, end)
+
+def get_last_pos(l, k, start, end):
+        if start > end:
+                return -1
+        middle_index = (start + end) / 2
+
+        if l[middle_index] == k:
+                if middle_index == len(l) - 1 or (middle_index < len(l) - 1 and l[middle_index + 1] != k):
+                        return middle_index
+                else:   
+                        print start
+                        start = middle_index + 1
+
+        elif l[middle_index] < k:
+                start = middle_index + 1
+        else:   
+                end = middle_index - 1
+
+        return get_last_pos(l, k, start, end)
+
+if __name__ == '__main__':
+        #l = [3, 5, 0, 2, 8, 9, 11, 2, 4, 19, 6, 0, 7, 2, 2]
+        #print merge_sort(l)
+        l = [1, 2, 2, 2, 2, 2, 3, 4, 5, 6, 6, 7]
+        first = get_first_pos(l, 2, 0, len(l) - 1)
+        print first 
+        last = get_last_pos(l, 2, 0, len(l) - 1)
+        print last
+        len = last - first + 1
+        print len
