@@ -1,0 +1,17 @@
+void permute(char *a, int i, int n)
+{
+   int j;
+   if (i == n)
+     printf("%s\n", a);
+   else
+   {
+        for (j = i; j <= n; j++)
+       {
+          if(a[i] == a[j] && j != i)  //为避免生成重复排列，当不同位置的字符相同时不再交换
+    　　     continue;
+          swap((a+i), (a+j));
+          permute(a, i+1, n);
+          swap((a+i), (a+j)); //backtrack
+       }
+   }
+} 
