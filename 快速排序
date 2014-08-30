@@ -1,0 +1,33 @@
+int partition(int *array, int i, int j)
+{
+
+  int p = array[i];
+  
+  while(i < j){
+    while(i < j && array[j] >= p){
+      j--;
+    }
+    if(i < j){
+      array[i++] = array[j]
+    }
+    
+    while(i < j && array[i] <= p){
+      i++;
+    }
+    if(i < j){
+      array[j--] = array[i]
+    }
+  }
+  array[i] = p
+  return i;
+}
+
+void quickSort(int *array, int low, int high){
+  if(low < high) {
+    p = partition(array, low, high);
+    
+    quickSort(array, low, p + 1);
+    quickSort(array, p + 1, high);
+  
+  }
+}
